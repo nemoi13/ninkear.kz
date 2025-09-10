@@ -1,0 +1,49 @@
+/* Фирменный стиль Hermes Orange */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #333;
+}
+
+header {
+  background: #ff5a00; /* Hermes Orange */
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+nav {
+  margin-top: 10px;
+}
+
+nav a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  padding: 40px;
+  text-align: center;
+}
+
+footer {
+  background: #f5f5f5;
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  color: #777;
+  margin-top: 40px;
+}
