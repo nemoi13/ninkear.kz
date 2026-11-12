@@ -18,14 +18,18 @@
 <style>
 :root{--paper:#f7f7f2;--white:#fff;--ink:#202522;--muted:#747a74;--line:#e0e4db;--orange:#ed6b36;--soft-orange:#f8e7dc;--radius:15px}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:106px}
+html{scroll-behavior:smooth;scroll-padding-top:106px;scrollbar-width:thin;scrollbar-color:#c9d1be var(--paper)}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--paper)}
+::-webkit-scrollbar-thumb{background:#c9d1be;border-radius:8px;border:2px solid var(--paper)}
+::-webkit-scrollbar-thumb:hover{background:var(--orange)}
 body{margin:0;color:var(--ink);background:var(--paper);font-family:"Inter","Segoe UI",Arial,sans-serif;font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
 button,a{-webkit-tap-highlight-color:transparent}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;cursor:pointer}
 a,button,summary{touch-action:manipulation}
 a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--orange);outline-offset:5px}
-img{display:block;max-width:100%;height:auto}
+img,svg{display:block;max-width:100%}
 p,h1,h2,h3{margin:0}
 .container{width:calc(100% - 112px);max-width:1264px;margin-inline:auto}
 .icon{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
@@ -67,8 +71,9 @@ h1 span{color:var(--orange)}
 .visual-label{position:absolute;top:26px;left:28px;font-size:9px;letter-spacing:2px;color:#747b70;z-index:2}
 .hero-circle{width:390px;height:390px;border:1px solid #dce0d4;border-radius:50%;position:absolute;left:50%;top:42%;transform:translate(-50%,-50%)}
 .hero-circle:before{content:"";position:absolute;inset:38px;border:1px solid #e0e4d7;border-radius:50%}
-.hero-product{position:absolute;left:0;right:0;top:0;bottom:13%;margin:auto;width:90%;height:82%;object-fit:contain;mix-blend-mode:multiply;z-index:1;filter:drop-shadow(0 19px 12px #29301c12);transition:transform .6s}
-.hero-visual:hover .hero-product{transform:translateY(-5px)}
+.hero-art{position:absolute;left:50%;top:45%;transform:translate(-50%,-50%);width:min(90%,560px);z-index:1;filter:drop-shadow(0 24px 30px rgba(32,40,28,.16));animation:float 7s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translate(-50%,-50%)}50%{transform:translate(-50%,-53%)}}
+.hero-visual:hover .hero-art{animation-play-state:paused}
 .visual-side{position:absolute;right:17px;top:48%;writing-mode:vertical-rl;font-size:8px;letter-spacing:2px;color:#6c7561}
 .product-caption{position:absolute;bottom:24px;left:28px;right:26px;display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid #d5dbcd;z-index:2}
 .caption-kicker{display:block;font-size:10px;color:#7a8275;margin-bottom:6px}
@@ -213,11 +218,11 @@ h2{font-size:clamp(28px,3vw,40px);line-height:1.18;letter-spacing:-1.7px;font-we
 .to-top:hover{background:var(--orange);border-color:var(--orange);color:#fff}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
 .reveal.visible{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.hero-art{animation:none}}
 .download-card,.partner-card,.shop-card{position:relative;overflow:hidden}
 .download-card::after,.partner-card::after,.shop-card::after{content:"";position:absolute;inset:0;background:radial-gradient(480px circle at var(--mx,50%) var(--my,50%),rgba(237,107,54,.08),transparent 42%);opacity:0;transition:opacity .3s;pointer-events:none}
 .download-card:hover::after,.partner-card:hover::after,.shop-card:hover::after{opacity:1}
-@media(min-width:1500px){.hero{min-height:670px}.hero-visual{height:550px}.hero-product{top:0}}
+@media(min-width:1500px){.hero{min-height:670px}.hero-visual{height:550px}}
 @media(max-width:1150px){.container{width:calc(100% - 72px)}.header-inner{gap:20px}.brand-region{display:none}.navigation{gap:22px}.hero{gap:25px;min-height:565px}.hero-visual{height:470px}h1{font-size:78px}.about-section{gap:42px}.local-section{gap:55px}.faq-section,.community-inner{gap:50px}.download-card{padding:23px 20px}.about-photo{height:390px}}
 @media(max-width:900px){.container{width:calc(100% - 48px)}.header-inner{height:80px}.header-mail{display:none}.hero{gap:20px;min-height:560px}h1{font-size:65px;letter-spacing:-4px}.hero-lead{font-size:13px}.hero-visual{height:444px}.hero-actions{flex-wrap:wrap}.quick-links{gap:13px}.quick-links strong{font-size:10px}.quick-links small{font-size:8px}.section{padding-block:75px}.section-intro{max-width:260px}.support-contact{padding:25px}.support-contact h3{font-size:30px}.email-line>a{font-size:20px}.download-card h3{font-size:18px}.about-photo{height:380px}.local-section{gap:40px}.footer-main{gap:30px}}
 @media(max-width:700px){
@@ -239,6 +244,7 @@ html{scroll-padding-top:90px}
 h1{font-size:52px;letter-spacing:-3px;margin:20px 0 18px}
 .hero-visual{height:360px}
 .hero-circle{width:290px;height:290px}
+.hero-art{width:min(92%,420px)}
 .quick-links{grid-template-columns:1fr;gap:0;padding-block:8px}
 .quick-links>a{padding:16px 0;border-right:0!important}
 .quick-links>a:not(:last-child){border-bottom:1px solid var(--line)}
@@ -310,7 +316,38 @@ h1{font-size:52px;letter-spacing:-3px;margin:20px 0 18px}
   <div class="hero-visual">
     <span class="visual-label">РАБОТА. УЧЁБА. ЖИЗНЬ.</span>
     <div class="hero-circle" aria-hidden="true"></div>
-    <img class="hero-product" src="https://cdn.shopify.com/s/files/1/0782/7020/2155/files/ninkear_a15_air.webp?v=1778848337&amp;width=1420" alt="Ноутбук Ninkear" referrerpolicy="no-referrer" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://cdn.shopify.com/s/files/1/0782/7020/2155/files/ninkear_s14.webp?v=1778848319&amp;width=1420';}else{this.style.display='none';}">
+    <svg class="hero-art" viewBox="0 0 900 620" role="img" aria-label="Ноутбук Ninkear" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="metal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9edf0"/><stop offset=".5" stop-color="#c6cdd3"/><stop offset="1" stop-color="#aeb6bd"/></linearGradient>
+        <linearGradient id="metalBase" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dfe4e8"/><stop offset="1" stop-color="#b3bbc2"/></linearGradient>
+        <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c1526"/><stop offset=".55" stop-color="#123049"/><stop offset="1" stop-color="#3a1c0e"/></linearGradient>
+        <linearGradient id="swirlA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#59c2ff"/><stop offset="1" stop-color="#1b4d7a"/></linearGradient>
+        <linearGradient id="swirlB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff8a4c"/><stop offset="1" stop-color="#c2410c"/></linearGradient>
+        <pattern id="keys" width="46" height="34" patternUnits="userSpaceOnUse"><rect x="4" y="4" width="38" height="26" rx="5" fill="#161e2a"/><rect x="4" y="4" width="38" height="26" rx="5" fill="none" stroke="#2c3a4c" stroke-width="1"/></pattern>
+        <clipPath id="screenClip"><rect x="228" y="70" width="444" height="286" rx="8"/></clipPath>
+        <filter id="soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="14"/></filter>
+      </defs>
+      <ellipse cx="450" cy="575" rx="300" ry="26" fill="#20251c" opacity=".14" filter="url(#soft)"/>
+      <rect x="200" y="48" width="500" height="330" rx="18" fill="url(#metal)"/>
+      <rect x="214" y="60" width="472" height="306" rx="10" fill="#0a0f18"/>
+      <g clip-path="url(#screenClip)">
+        <rect x="228" y="70" width="444" height="286" fill="url(#screen)"/>
+        <path d="M240 300 C330 150 430 150 520 240 C600 320 640 260 672 210 L672 356 L240 356 Z" fill="url(#swirlA)" opacity=".8"/>
+        <path d="M300 356 C380 240 470 250 540 300 C610 350 650 320 672 290 L672 356 Z" fill="url(#swirlB)" opacity=".85"/>
+        <path d="M250 120 C360 60 520 70 660 140" stroke="#bfe6ff" stroke-width="3" fill="none" opacity=".35"/>
+        <path d="M250 150 C360 90 520 100 660 170" stroke="#ffd9c2" stroke-width="2" fill="none" opacity=".3"/>
+      </g>
+      <circle cx="450" cy="65" r="3" fill="#39424e"/>
+      <rect x="214" y="366" width="472" height="6" rx="3" fill="#8f979e"/>
+      <path d="M140 380 L760 380 L826 470 Q830 480 818 480 L82 480 Q70 480 74 470 Z" fill="url(#metalBase)"/>
+      <path d="M140 380 L760 380 L770 394 L130 394 Z" fill="#9aa2a9"/>
+      <g transform="translate(166,398) skewX(-0)">
+        <rect x="0" y="0" width="568" height="52" rx="6" fill="url(#keys)"/>
+      </g>
+      <rect x="360" y="452" width="180" height="22" rx="6" fill="#c2c9cf" stroke="#a7afb6" stroke-width="1"/>
+      <path d="M82 480 L818 480 L806 492 L94 492 Z" fill="#8b939a"/>
+      <text x="450" y="372" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="12" letter-spacing="2" fill="#5b646c">ninkear</text>
+    </svg>
     <span class="visual-side">DESIGNED FOR EVERYDAY</span>
     <div class="product-caption">
       <div><span class="caption-kicker">Лёгкость в каждом дне</span><span class="caption-title">Ноутбуки Ninkear</span></div>
