@@ -63,10 +63,11 @@ h1 span{color:var(--orange)}
 .hero-email{display:inline-flex;align-items:center;gap:9px;font-size:12px;color:var(--muted);margin-top:21px}
 .hero-email .icon{width:15px;height:15px}
 .hero-visual{height:518px;background:#f0f2ea;border:1px solid #e7eae0;border-radius:16px;position:relative;overflow:hidden;isolation:isolate}
+.hero-visual::before{content:"";position:absolute;left:50%;top:40%;width:440px;height:440px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(237,107,54,.10),transparent 65%);z-index:0}
 .visual-label{position:absolute;top:26px;left:28px;font-size:9px;letter-spacing:2px;color:#747b70;z-index:2}
 .hero-circle{width:390px;height:390px;border:1px solid #dce0d4;border-radius:50%;position:absolute;left:50%;top:42%;transform:translate(-50%,-50%)}
 .hero-circle:before{content:"";position:absolute;inset:38px;border:1px solid #e0e4d7;border-radius:50%}
-.hero-product{position:absolute;width:94%;height:86%;object-fit:contain;left:2%;top:1%;mix-blend-mode:multiply;z-index:1;filter:drop-shadow(0 19px 12px #29301c12);transition:transform .6s}
+.hero-product{position:absolute;left:0;right:0;top:0;bottom:13%;margin:auto;width:90%;height:82%;object-fit:contain;mix-blend-mode:multiply;z-index:1;filter:drop-shadow(0 19px 12px #29301c12);transition:transform .6s}
 .hero-visual:hover .hero-product{transform:translateY(-5px)}
 .visual-side{position:absolute;right:17px;top:48%;writing-mode:vertical-rl;font-size:8px;letter-spacing:2px;color:#6c7561}
 .product-caption{position:absolute;bottom:24px;left:28px;right:26px;display:flex;align-items:center;justify-content:space-between;padding-top:20px;border-top:1px solid #d5dbcd;z-index:2}
@@ -309,7 +310,7 @@ h1{font-size:52px;letter-spacing:-3px;margin:20px 0 18px}
   <div class="hero-visual">
     <span class="visual-label">РАБОТА. УЧЁБА. ЖИЗНЬ.</span>
     <div class="hero-circle" aria-hidden="true"></div>
-    <img class="hero-product" src="https://cdn.shopify.com/s/files/1/0782/7020/2155/files/A15_PRO.webp?v=1777394082&amp;width=1000" alt="Ноутбук Ninkear" referrerpolicy="no-referrer">
+    <img class="hero-product" src="https://cdn.shopify.com/s/files/1/0782/7020/2155/files/ninkear_a15_air.webp?v=1778848337&amp;width=1420" alt="Ноутбук Ninkear" referrerpolicy="no-referrer" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://cdn.shopify.com/s/files/1/0782/7020/2155/files/ninkear_s14.webp?v=1778848319&amp;width=1420';}else{this.style.display='none';}">
     <span class="visual-side">DESIGNED FOR EVERYDAY</span>
     <div class="product-caption">
       <div><span class="caption-kicker">Лёгкость в каждом дне</span><span class="caption-title">Ноутбуки Ninkear</span></div>
